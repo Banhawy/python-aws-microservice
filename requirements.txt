@@ -1,3 +1,4 @@
+wikipedia
 pytest
 pytest-cov
 pylint
