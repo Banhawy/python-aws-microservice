@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from main import app
-from mylib.logic import wiki, search_wiki
+from mylib.controllers.wiki import wiki, search_wiki
 
 client = TestClient(app)
 
