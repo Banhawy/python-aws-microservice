@@ -14,7 +14,6 @@ def test_read_main():
     assert response.json() == {"message": "Hello, World!"}
 
 def test_healthcheck():
-    result = wiki("god")
     ping_response = client.get("/healthcheck/ping")
     ready_response = client.get("/healthcheck/ready")
     assert ping_response.status_code == 200
