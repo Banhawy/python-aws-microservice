@@ -13,6 +13,15 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"message": "Hello, World!"}
 
+def test_healthcheck():
+    result = wiki("god")
+    ping_response = client.get("/healthcheck/ping")
+    ready_response = client.get("/healthcheck/ready")
+    assert ping_response.status_code == 200
+    assert ping_response.json() == "ok"
+    assert ready_response.status_code == 200
+    assert ready_response.json() == "ready"
+
 def test_wiki_main():
     result = wiki("god")
     response = client.get("/wiki/god")
@@ -21,6 +30,6 @@ def test_wiki_main():
 
 def test_wiki_search():
     result = search_wiki("god")
-    response = client.get("/search/god")
+    response = client.get("/wiki/search/god")
     assert response.status_code == 200
     assert response.json() == {"message": result}
