@@ -3,18 +3,6 @@ name: Python microservice test with Github Actions
 on: [push]
 
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-    - name: Install dependencies
-      run: |
-        make install
-
   test:
     runs-on: ubuntu-latest
 
@@ -24,6 +12,9 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
+    - name: Install dependencies
+      run: |
+        make install
     - name: Lint with pylint
       run: |
         make lint
